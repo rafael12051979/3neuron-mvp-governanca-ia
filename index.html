@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<title>Plataforma 3Neuron de Governança de IA · Protótipo MVP</title><style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,Arial,sans-serif}
+:root{--navy:#0D1B2A;--navy2:#13294B;--blue:#1E4D8C;--blueLt:#3B8FD4;--cyan:#00B8D9;--bg:#EEF2F7;--card:#fff;--line:#E1E7F0;--tx:#1A2C42;--mut:#6B7A90;--alto:#E05656;--baixo:#1F9D6B;--med:#E8A33D;--ved:#7A1F1F}
+body{background:var(--bg);color:var(--tx);min-width:1440px}
+.sb{width:236px;height:100vh;position:sticky;top:0;background:var(--navy);color:#fff;flex:0 0 auto;display:flex;flex-direction:column;padding:0}
+.brand{padding:20px 22px;font-size:18px;font-weight:800;letter-spacing:.5px;border-bottom:1px solid rgba(255,255,255,.08)}
+.brand span{color:var(--cyan)}
+.brand .sub{display:block;font-size:10px;font-weight:400;color:#8aa0bd;letter-spacing:1px;margin-top:3px;text-transform:uppercase}
+.nav{padding:12px 12px;flex:1}
+.nav a{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:9px;color:#c4d2e6;text-decoration:none;font-size:13.5px;margin-bottom:2px}
+.nav a .ic{width:16px;height:16px;border-radius:4px;background:#3a4d6b;flex:0 0 auto}
+.nav a.on{background:var(--blue);color:#fff;font-weight:600}
+.nav a.on .ic{background:var(--cyan)}
+.nav .grp{font-size:10px;color:#5d7characters;color:#65799a;text-transform:uppercase;letter-spacing:1px;padding:14px 14px 6px}
+.sbfoot{padding:14px 18px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:#8aa0bd}
+.main{flex:1;min-height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.top{height:60px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 26px;gap:18px;flex:0 0 auto}
+.crumb{font-size:13px;color:var(--mut)}.crumb b{color:var(--tx)}
+.search{margin-left:auto;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 14px;font-size:13px;color:var(--mut);width:280px}
+.edpill{background:#0b3a44;color:var(--cyan);font-size:11px;font-weight:700;padding:6px 12px;border-radius:20px;letter-spacing:.5px}
+.user{width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.body{padding:26px 30px}
+.h1{font-size:22px;font-weight:800;color:var(--navy)}
+.sub{font-size:13px;color:var(--mut);margin-top:3px}
+.row{display:flex;gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.kpi{flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;border-left:5px solid var(--blue)}
+.kpi .n{font-size:30px;font-weight:800;color:var(--navy)}
+.kpi .l{font-size:12px;color:var(--mut);margin-top:4px}
+.kpi .d{font-size:11px;margin-top:8px;font-weight:700}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:11px 18px;font-size:13px;font-weight:700;cursor:pointer}
+.btn.cy{background:var(--cyan);color:var(--navy)}
+.btn.gh{background:#fff;border:1px solid var(--line);color:var(--tx)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.5px;padding:11px 14px;border-bottom:2px solid var(--line)}
+td{padding:13px 14px;border-bottom:1px solid var(--line);color:var(--tx)}
+tr:last-child td{border-bottom:none}
+.bdg{display:inline-block;padding:4px 11px;border-radius:20px;font-size:11px;font-weight:700}
+.b-alto{background:#fdeaea;color:var(--alto)}.b-baixo{background:#e9f7f0;color:var(--baixo)}.b-med{background:#fdf3e3;color:var(--med)}.b-ved{background:#f6e4e4;color:var(--ved)}.b-cinza{background:#eef2f7;color:var(--mut)}.b-cy{background:#e2f6fb;color:#0182a3}
+.sec{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:7px}
+
+.lg{min-width:1440px;min-height:100vh;display:flex}
+.lleft{flex:1;background:linear-gradient(150deg,#0D1B2A,#13294B);color:#fff;padding:80px 70px;display:flex;flex-direction:column;justify-content:center}
+.lleft h1{font-size:42px;font-weight:800;line-height:1.1;margin-bottom:18px}
+.lleft h1 span{color:var(--cyan)}
+.lleft p{font-size:16px;color:#9fb4d0;max-width:460px;line-height:1.5}
+.chips{margin-top:30px;display:flex;gap:10px;flex-wrap:wrap}
+.chip{background:rgba(0,184,217,.14);color:var(--cyan);padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600}
+.lright{width:520px;background:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 70px}
+.lo{font-size:24px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.lo2{font-size:13px;color:var(--mut);margin-bottom:30px}
+.sso{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:11px;padding:15px 18px;font-size:14px;font-weight:600;color:var(--tx);margin-bottom:12px;cursor:pointer}
+.sso .g{width:26px;height:26px;border-radius:6px;background:#1351B4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
+.sso.az .g{background:#0078D4}
+.orr{text-align:center;color:var(--mut);font-size:12px;margin:18px 0}
+.fld{border:1px solid var(--line);border-radius:9px;padding:13px 15px;font-size:13px;color:var(--mut);margin-bottom:10px}
+
+#app{display:none} .appwrap{display:flex} .screen{display:none} .screen.on{display:block}
+.nav a{cursor:pointer} .logout{cursor:pointer;color:#8aa0bd;font-size:11px;text-decoration:underline}
+.backlink{display:inline-block;color:var(--blue);font-size:13px;font-weight:600;cursor:pointer;margin-bottom:10px}
+.demo{position:fixed;bottom:14px;right:16px;background:#0b3a44;color:var(--cyan);font-size:11px;padding:7px 13px;border-radius:20px;font-weight:600;z-index:99}
+</style></head><body>
+<div id="login"><div class="lg">
+<div class="lleft"><div style="font-size:20px;font-weight:800;letter-spacing:1px;margin-bottom:40px">3<span>NEURON</span> · GOVERNANÇA DE IA</div>
+<h1>A conformidade da sua IA,<br><span>sob controle.</span></h1>
+<p>Inventário, classificação de risco, avaliação de impacto e evidências audit-ready — aderente à Resolução CNJ 615/2025.</p>
+<div class="chips"><span class="chip">Conector Sinapses</span><span class="chip">AIA · 72h CNIAJ</span><span class="chip">LGPD nativo</span><span class="chip">Multi-tenant</span></div></div>
+<div class="lright"><div class="lo">Acesso seguro</div><div class="lo2">Entre com a identidade institucional do seu tribunal.</div>
+<div class="sso" onclick="enter()"><span class="g">gov</span> Entrar com gov.br</div>
+<div class="sso az"><span class="g">A</span> Entrar com Azure AD / Microsoft</div>
+<div class="sso" onclick="enter()"><span class="g" style="background:#34A853">K</span> Entrar com Keycloak (SSO do tribunal)</div>
+<div class="orr">— ou —</div>
+<div class="fld">E-mail institucional</div><div class="fld">Senha</div>
+<button class="btn" style="width:100%;padding:14px;margin-top:6px" onclick="enter()">Entrar</button>
+<div style="font-size:11px;color:var(--mut);margin-top:18px;text-align:center">Autenticação MFA obrigatória · TLS 1.2+ · dados hospedados no Brasil</div>
+</div></div></div>
+<div id="app"><div class="appwrap">
+<div class="sb"><div class="brand">3<span>NEURON</span><span class="sub">Governança de IA</span></div>
+<div class="nav"><a data-k="dash" onclick="show('dash')"><span class="ic"></span>Dashboard</a><a data-k="inv" onclick="show('inv')"><span class="ic"></span>Inventário · AI Registry</a><a data-k="class" onclick="show('class')"><span class="ic"></span>Classificação de risco</a><a data-k="oblig" onclick="show('oblig')"><span class="ic"></span>Matriz de obrigações</a><a data-k="aia" onclick="show('aia')"><span class="ic"></span>Avaliação de impacto</a><a data-k="inc" onclick="show('inc')"><span class="ic"></span>Incidentes 72h</a><a data-k="evid" onclick="show('evid')"><span class="ic"></span>Cofre de evidências</a><a data-k="cap" onclick="show('cap')"><span class="ic"></span>Capacitação</a><a data-k="admin" onclick="show('admin')"><span class="ic"></span>Administração</a></div><div class="sbfoot">TJ-Exemplo · Edição Judiciário<br><span class="logout" onclick="logout()">sair</span></div></div>
+<div class="main"><div class="top"><div class="crumb" id="crumb"></div>
+<div class="search">🔍  Buscar solução, obrigação, incidente…</div><div class="edpill">CNJ 615</div><div class="user">RG</div></div>
+<div class="body"><div class="screen" id="s-dash">
+<div style="display:flex;align-items:flex-end;justify-content:space-between"><div><div class="h1">Dashboard executivo</div><div class="sub">Visão de conformidade · TJ-Exemplo · atualizado há 2h</div></div>
+<button class="btn gh">Exportar relatório do board (PDF)</button></div>
+<div class="row" style="margin-top:22px">
+<div class="kpi"><div class="n">37</div><div class="l">Soluções de IA inventariadas</div><div class="d" style="color:var(--mut)">+5 no último mês</div></div>
+<div class="kpi" style="border-left-color:var(--alto)"><div class="n" style="color:var(--alto)">8</div><div class="l">Obrigações vencidas</div><div class="d" style="color:var(--alto)">▲ requer ação</div></div>
+<div class="kpi" style="border-left-color:var(--med)"><div class="n" style="color:var(--med)">2</div><div class="l">Incidentes abertos (72h)</div><div class="d" style="color:var(--med)">1 com prazo &lt; 24h</div></div>
+<div class="kpi" style="border-left-color:var(--baixo)"><div class="n">82%</div><div class="l">Cobertura de capacitação</div><div class="d" style="color:var(--baixo)">meta ≥ 95%</div></div>
+</div>
+<div class="row" style="margin-top:18px">
+<div class="card" style="width:380px"><div class="sec">Soluções por nível de risco</div>
+<div style="display:flex;gap:24px;align-items:center">
+<svg width="150" height="150" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#eef2f7" stroke-width="6"/>
+<circle cx="21" cy="21" r="15.9" fill="none" stroke="#E05656" stroke-width="6" stroke-dasharray="30 70" stroke-dashoffset="0" transform="rotate(-90 21 21)"/>
+<circle cx="21" cy="21" r="15.9" fill="none" stroke="#1F9D6B" stroke-width="6" stroke-dasharray="54 46" stroke-dashoffset="-30" transform="rotate(-90 21 21)"/>
+<circle cx="21" cy="21" r="15.9" fill="none" stroke="#7A1F1F" stroke-width="6" stroke-dasharray="6 94" stroke-dashoffset="-84" transform="rotate(-90 21 21)"/>
+<text x="21" y="20" text-anchor="middle" font-size="7" font-weight="800" fill="#1A2C42">37</text><text x="21" y="26" text-anchor="middle" font-size="3.4" fill="#6B7A90">soluções</text></svg>
+<div style="font-size:13px;line-height:2.1"><div><span class="dot" style="background:#E05656"></span>Alto risco (AR) · 11</div><div><span class="dot" style="background:#1F9D6B"></span>Baixo risco (BR) · 20</div><div><span class="dot" style="background:#7A1F1F"></span>Vedado · 2</div><div><span class="dot" style="background:#eef2f7;border:1px solid #ccc"></span>A classificar · 4</div></div>
+</div></div>
+<div class="card" style="flex:1"><div class="sec">Exposição residual · obrigações pendentes por criticidade</div>
+<table><tr><td style="width:38%">AIA vencida — solução AR (minuta de sentença)</td><td><span class="bdg b-alto">Crítica</span></td><td>Vence em 3 dias</td><td style="text-align:right"><span class="bdg b-cinza">Office de IA</span></td></tr>
+<tr><td>Cadastro Sinapses pendente (2 soluções em produção)</td><td><span class="bdg b-alto">Alta</span></td><td>Vencida há 12d</td><td style="text-align:right"><span class="bdg b-cinza">TI</span></td></tr>
+<tr><td>Política de IAGen sem aceite (43 servidores)</td><td><span class="bdg b-med">Média</span></td><td>Em aberto</td><td style="text-align:right"><span class="bdg b-cinza">RH</span></td></tr>
+<tr><td>Reavaliação de fornecedor crítico</td><td><span class="bdg b-med">Média</span></td><td>Vence em 9 dias</td><td style="text-align:right"><span class="bdg b-cinza">Jurídico</span></td></tr></table>
+</div></div></div><div class="screen" id="s-inv">
+<div style="display:flex;align-items:flex-end;justify-content:space-between"><div><div class="h1">Inventário de soluções de IA</div><div class="sub">37 soluções · inclui uso embarcado e informal (shadow AI)</div></div>
+<div style="display:flex;gap:10px"><button class="btn gh">Importar planilha</button><button class="btn">+ Nova solução</button></div></div>
+<div style="display:flex;gap:10px;margin:18px 0"><span class="bdg b-cy">Todas (37)</span><span class="bdg b-cinza">Em produção (22)</span><span class="bdg b-cinza">Alto risco (11)</span><span class="bdg b-cinza">Sem Sinapses (6)</span><span class="bdg b-cinza">Shadow AI (4)</span></div>
+<div class="card" style="padding:0">
+<table><tr><th>Solução</th><th>Área dona</th><th>Risco</th><th>Ciclo de vida</th><th>Sinapses</th><th>Responsável</th></tr>
+<tr style="cursor:pointer" onclick="show('sol')"><td><b>Minuta de sentença assistida</b><br><span style="font-size:11px;color:var(--mut)">GPT-4o · v2.1</span></td><td>1ª Vara Cível</td><td><span class="bdg b-alto">AR4 · Alto</span></td><td>Produção</td><td><span class="bdg b-alto">Pendente</span></td><td>M. Andrade</td></tr>
+<tr><td><b>Sumarizador de autos</b><br><span style="font-size:11px;color:var(--mut)">Llama 3 · v1.4</span></td><td>Secretaria Judicial</td><td><span class="bdg b-baixo">BR1 · Baixo</span></td><td>Produção</td><td><span class="bdg b-baixo">Ativo</span></td><td>TI</td></tr>
+<tr><td><b>Reconhecimento facial em audiência</b></td><td>Segurança</td><td><span class="bdg b-ved">Vedado · art.10</span></td><td>Descontinuar</td><td><span class="bdg b-cinza">—</span></td><td>Office de IA</td></tr>
+<tr><td><b>Jurimetria · pesquisa de precedentes</b><br><span style="font-size:11px;color:var(--mut)">embarcado no SaaS X</span></td><td>Gabinete</td><td><span class="bdg b-baixo">BR2 · Baixo</span></td><td>Produção</td><td><span class="bdg b-baixo">Ativo</span></td><td>TI</td></tr>
+<tr><td><b>ChatGPT (uso pessoal)</b><br><span style="font-size:11px;color:var(--med)">declarado em survey · shadow AI</span></td><td>Diversos</td><td><span class="bdg b-med">A avaliar</span></td><td>Uso informal</td><td><span class="bdg b-cinza">N/A</span></td><td>—</td></tr>
+<tr><td><b>Transcrição de audiências</b><br><span style="font-size:11px;color:var(--mut)">Whisper · v3</span></td><td>Secretaria</td><td><span class="bdg b-baixo">BR7 · Baixo</span></td><td>Homologação</td><td><span class="bdg b-med">Em cadastro</span></td><td>TI</td></tr>
+<tr><td><b>Anonimização de peças (LGPD)</b></td><td>DPO</td><td><span class="bdg b-baixo">BR8 · Baixo</span></td><td>Produção</td><td><span class="bdg b-baixo">Ativo</span></td><td>DPO</td></tr>
+</table></div></div><div class="screen" id="s-sol"><span class="backlink" onclick="show('inv')">← Voltar ao inventário</span>
+<div style="display:flex;align-items:flex-start;justify-content:space-between"><div><div class="h1">Minuta de sentença assistida <span class="bdg b-alto" style="font-size:13px;vertical-align:middle">AR4 · Alto risco</span></div><div class="sub">1ª Vara Cível · em produção desde 03/2024 · responsável: M. Andrade</div></div>
+<button class="btn gh">Editar ficha</button></div>
+<div style="display:flex;gap:24px;margin:18px 0 16px;border-bottom:1px solid var(--line)">
+<div style="padding:10px 2px;border-bottom:2px solid var(--blue);color:var(--blue);font-weight:700;font-size:13px">Visão geral</div>
+<div style="padding:10px 2px;color:var(--mut);font-size:13px">Classificação</div><div style="padding:10px 2px;color:var(--mut);font-size:13px">AIA</div>
+<div style="padding:10px 2px;color:var(--mut);font-size:13px">Evidências</div><div style="padding:10px 2px;color:var(--mut);font-size:13px">Versões</div></div>
+<div class="row">
+<div class="card" style="flex:1.4"><div class="sec">Ficha da solução (art. 23)</div>
+<table style="font-size:13px"><tr><td style="color:var(--mut);width:34%">Finalidade</td><td>Apoio à redação de minuta de sentença — versão final do magistrado</td></tr>
+<tr><td style="color:var(--mut)">Motores / LLMs</td><td>OpenAI GPT-4o (v2024-08) · embedding text-3-large</td></tr>
+<tr><td style="color:var(--mut)">Dados tratados</td><td>Autos processuais · <span class="bdg b-med">contém segredo de justiça</span></td></tr>
+<tr><td style="color:var(--mut)">Fornecedor</td><td>Integrador Y · contrato 014/2024</td></tr>
+<tr><td style="color:var(--mut)">Versão atual</td><td>v2.1 (reavaliação de risco disparada)</td></tr>
+<tr><td style="color:var(--mut)">Supervisão humana</td><td>Obrigatória — magistrado valida antes da publicação</td></tr></table></div>
+<div class="card" style="flex:1"><div class="sec">Ciclo de vida</div>
+<div style="font-size:13px;line-height:2.4"><div><span class="dot" style="background:#1F9D6B"></span>Pesquisa — 11/2023</div><div><span class="dot" style="background:#1F9D6B"></span>Desenvolvimento — 01/2024</div><div><span class="dot" style="background:#1F9D6B"></span>Homologação — 02/2024</div><div><span class="dot" style="background:#1E4D8C"></span><b>Produção — 03/2024</b></div></div>
+<div class="sec" style="margin-top:18px">Obrigações desta solução</div>
+<div style="font-size:12.5px;line-height:2"><div><span class="bdg b-alto">●</span> AIA contínua — <b style="color:var(--alto)">vencida</b></div><div><span class="bdg b-alto">●</span> Sinapses (AR antes do dev) — <b style="color:var(--alto)">pendente</b></div><div><span class="bdg b-baixo">●</span> Supervisão humana — ok</div></div>
+</div></div></div><div class="screen" id="s-class">
+<div class="h1">Classificação de risco — motor configurável</div><div class="sub">Árvore de critérios · Resolução CNJ 615/2025, art. 9º e Anexo</div>
+<div class="row" style="margin-top:20px">
+<div class="card" style="flex:1.3"><div class="sec">Questionário de enquadramento</div>
+<div style="font-size:13.5px;line-height:1.5">
+<div style="padding:12px 0;border-bottom:1px solid var(--line)">A solução formula juízo conclusivo sobre aplicação de norma/precedentes a fatos concretos? <b style="color:var(--blue)">Sim ▸ AR4</b></div>
+<div style="padding:12px 0;border-bottom:1px solid var(--line)">Há possibilidade de revisão humana dos resultados? <b style="color:var(--baixo)">Sim</b></div>
+<div style="padding:12px 0;border-bottom:1px solid var(--line)">Processa dados sob segredo de justiça? <b style="color:var(--med)">Sim — anonimização exigida</b></div>
+<div style="padding:12px 0">Incorre em vedação do art. 10? <b style="color:var(--baixo)">Não</b></div></div>
+<div class="sec" style="margin-top:18px">Checklist de vedações (art. 10)</div>
+<div style="font-size:12.5px;line-height:1.9;color:var(--baixo)">✓ Não faz predição de reiteração delitiva &nbsp; ✓ Não ranqueia pessoas &nbsp; ✓ Não reconhece emoções &nbsp; ✓ Tem revisão humana</div>
+</div>
+<div class="card" style="flex:1;background:linear-gradient(160deg,#13294B,#0D1B2A);color:#fff">
+<div style="font-size:12px;color:var(--cyan);letter-spacing:1px;text-transform:uppercase">Resultado do enquadramento</div>
+<div style="font-size:38px;font-weight:800;margin:14px 0 4px">AR4 · Alto</div>
+<div style="font-size:13px;color:#9fb4d0;line-height:1.5">Juízo conclusivo sobre aplicação de norma/precedentes (Anexo, AR4). Dispara: <b style="color:#fff">AIA contínua, cadastro Sinapses antes do desenvolvimento, sumário público, auditoria regular.</b></div>
+<div style="margin-top:20px;background:rgba(255,255,255,.06);border-radius:10px;padding:14px">
+<div style="font-size:11px;color:#9fb4d0;text-transform:uppercase;letter-spacing:.5px">Justificativa documentada (obrigatória)</div>
+<div style="font-size:12.5px;margin-top:6px;color:#e8eef7">"Gera conclusão jurídica sobre o caso; enquadra-se em AR4. Defesa contra reclassificação de ofício (art. 9º, §3º)."</div></div>
+<div style="font-size:11px;color:#9fb4d0;margin-top:14px">Classificado por <b style="color:#fff">R. Godinho</b> · aprovado por <b style="color:#fff">Comitê de IA</b> · 18/06/2026</div>
+</div></div></div><div class="screen" id="s-oblig">
+<div class="h1">Matriz de obrigações</div><div class="sub">Derivada automaticamente do framework + nível de risco · status por solução</div>
+<div class="row" style="margin:18px 0"><div class="kpi" style="border-left-color:var(--baixo)"><div class="n" style="font-size:24px;color:var(--baixo)">64</div><div class="l">Em dia</div></div>
+<div class="kpi" style="border-left-color:var(--med)"><div class="n" style="font-size:24px;color:var(--med)">15</div><div class="l">A vencer (30d)</div></div>
+<div class="kpi" style="border-left-color:var(--alto)"><div class="n" style="font-size:24px;color:var(--alto)">8</div><div class="l">Vencidas</div></div>
+<div class="kpi"><div class="n" style="font-size:24px">87</div><div class="l">Total de obrigações</div></div></div>
+<div class="card" style="padding:0"><table>
+<tr><th>Obrigação (base normativa)</th><th>Solução</th><th>Responsável</th><th>Prazo</th><th>Status</th></tr>
+<tr><td>AIA contínua (art. 14)</td><td>Minuta de sentença</td><td>Office de IA</td><td>15/06/2026</td><td><span class="bdg b-alto">Vencida</span></td></tr>
+<tr><td>Cadastro Sinapses antes do dev (art. 24, §4º)</td><td>Minuta de sentença</td><td>TI</td><td>—</td><td><span class="bdg b-alto">Vencida</span></td></tr>
+<tr><td>Sumário público no Sinapses (art. 24, §1º)</td><td>Análise de perfil</td><td>Office de IA</td><td>30/06/2026</td><td><span class="bdg b-med">A vencer</span></td></tr>
+<tr><td>Capacitação prévia (art. 19, §3º, I)</td><td>Todas IAGen</td><td>Escola Judicial</td><td>Recorrente</td><td><span class="bdg b-med">82% cobertura</span></td></tr>
+<tr><td>Monitoramento contínuo (art. 13, §1º)</td><td>Soluções AR</td><td>TI</td><td>Mensal</td><td><span class="bdg b-baixo">Em dia</span></td></tr>
+<tr><td>Anonimização na origem (art. 20, p.ú.)</td><td>Sumarizador</td><td>DPO</td><td>—</td><td><span class="bdg b-baixo">Em dia</span></td></tr>
+<tr><td>Atualização de registro a cada 12m (art. 25)</td><td>Transcrição</td><td>TI</td><td>02/2027</td><td><span class="bdg b-baixo">Em dia</span></td></tr>
+</table></div></div><div class="screen" id="s-aia">
+<div class="h1">Avaliação de Impacto Algorítmico (AIA)</div><div class="sub">Solução AR4 · art. 14 · processo contínuo · revisão programada para 12/2026</div>
+<div style="display:flex;gap:10px;margin:20px 0 22px;align-items:center">
+<div style="flex:1;text-align:center"><div style="width:34px;height:34px;border-radius:50%;background:var(--baixo);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700">✓</div><div style="font-size:11px;margin-top:6px;color:var(--baixo);font-weight:700">Escopo</div></div>
+<div style="flex:0 0 40px;height:2px;background:var(--baixo)"></div>
+<div style="flex:1;text-align:center"><div style="width:34px;height:34px;border-radius:50%;background:var(--baixo);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700">✓</div><div style="font-size:11px;margin-top:6px;color:var(--baixo);font-weight:700">Direitos afetados</div></div>
+<div style="flex:0 0 40px;height:2px;background:var(--blue)"></div>
+<div style="flex:1;text-align:center"><div style="width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700">3</div><div style="font-size:11px;margin-top:6px;color:var(--blue);font-weight:700">Vieses & mitigação</div></div>
+<div style="flex:0 0 40px;height:2px;background:var(--line)"></div>
+<div style="flex:1;text-align:center"><div style="width:34px;height:34px;border-radius:50%;background:#fff;border:2px solid var(--line);color:var(--mut);display:inline-flex;align-items:center;justify-content:center;font-weight:700">4</div><div style="font-size:11px;margin-top:6px;color:var(--mut)">Parecer</div></div>
+<div style="flex:0 0 40px;height:2px;background:var(--line)"></div>
+<div style="flex:1;text-align:center"><div style="width:34px;height:34px;border-radius:50%;background:#fff;border:2px solid var(--line);color:var(--mut);display:inline-flex;align-items:center;justify-content:center;font-weight:700">5</div><div style="font-size:11px;margin-top:6px;color:var(--mut)">Sumário público</div></div>
+</div>
+<div class="row"><div class="card" style="flex:1.4"><div class="sec">Etapa 3 · Análise de vieses e medidas mitigadoras</div>
+<table style="font-size:13px"><tr><th>Risco identificado</th><th>Medida mitigadora</th><th>Indicador</th></tr>
+<tr><td>Viés por região/classe nos precedentes</td><td>Curadoria + revisão humana obrigatória</td><td><span class="bdg b-baixo">Monitorado</span></td></tr>
+<tr><td>Alucinação de jurisprudência</td><td>Citação rastreável + checagem de fonte</td><td><span class="bdg b-med">Em implantação</span></td></tr>
+<tr><td>Dependência excessiva do magistrado</td><td>Marca d'água "gerado por IA" (art. 21)</td><td><span class="bdg b-baixo">Ativo</span></td></tr></table></div>
+<div class="card" style="flex:1"><div class="sec">Participação institucional (art. 14, §2º)</div>
+<div style="font-size:13px;line-height:2.2"><div><span class="dot" style="background:#1F9D6B"></span>OAB — convidada · ata 02/2026</div><div><span class="dot" style="background:#1F9D6B"></span>Ministério Público — acompanhando</div><div><span class="dot" style="background:#E8A33D"></span>Defensoria — convite pendente</div></div>
+<div class="sec" style="margin-top:18px">Revisão</div><div style="font-size:13px;color:var(--mut)">Próxima revisão obrigatória: <b style="color:var(--tx)">dez/2026</b> · status atual: <span class="bdg b-med">Em elaboração</span></div>
+<button class="btn cy" style="margin-top:18px;width:100%">Gerar sumário público (Sinapses)</button></div></div></div><div class="screen" id="s-inc">
+<div class="h1">Evento adverso EV-2026-014</div><div class="sub">Possível injeção de prompt via petição anexada · solução "Sumarizador de autos"</div>
+<div class="row" style="margin-top:20px">
+<div class="card" style="flex:0 0 340px;background:linear-gradient(160deg,#7A1F1F,#3a0f0f);color:#fff;text-align:center">
+<div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#ffd0d0">Prazo de notificação ao CNIAJ</div>
+<div style="font-size:52px;font-weight:800;margin:12px 0 2px">47:12</div><div style="font-size:13px;color:#ffd0d0">horas restantes · art. 42, §2º</div>
+<div style="margin-top:20px;display:flex;justify-content:space-between;font-size:11px;color:#ffd0d0;padding:0 10px"><span>● 24h</span><span>● 48h</span><span>● 64h</span></div>
+<div style="height:7px;background:rgba(255,255,255,.2);border-radius:4px;margin:8px 10px 0"><div style="width:34%;height:7px;background:#fff;border-radius:4px"></div></div>
+<button class="btn cy" style="margin-top:22px;width:90%">Gerar minuta de notificação</button></div>
+<div class="card" style="flex:1"><div class="sec">Runbook de resposta — executável</div>
+<table style="font-size:13px"><tr><th>Etapa</th><th>Responsável</th><th>Horário</th><th>Status</th></tr>
+<tr><td>Identificação e contenção</td><td>CISO</td><td>18/06 09:12</td><td><span class="bdg b-baixo">Concluída</span></td></tr>
+<tr><td>Isolamento da solução afetada</td><td>TI</td><td>18/06 09:40</td><td><span class="bdg b-baixo">Concluída</span></td></tr>
+<tr><td>Avaliação de impacto e dados expostos</td><td>DPO</td><td>—</td><td><span class="bdg b-med">Em curso</span></td></tr>
+<tr><td>Notificação ao CNIAJ (72h)</td><td>Office de IA</td><td>—</td><td><span class="bdg b-cinza">Pendente</span></td></tr>
+<tr><td>Notificação à ANPD (se dados pessoais)</td><td>DPO</td><td>—</td><td><span class="bdg b-cinza">Avaliando</span></td></tr></table>
+<div class="sec" style="margin-top:16px">Evidências anexadas</div><div style="font-size:12.5px;color:var(--mut)">📎 log_sumarizador_18jun.txt · 📎 petição_suspeita.pdf · 📎 print_output.png</div></div></div></div><div class="screen" id="s-evid">
+<div style="display:flex;align-items:flex-end;justify-content:space-between"><div><div class="h1">Cofre de evidências · audit-ready</div><div class="sub">Organizado por solução, obrigação e período · navegável por auditor externo (modo somente-leitura)</div></div>
+<button class="btn gh">🔒 Abrir modo auditor</button></div>
+<div style="display:flex;gap:10px;margin:18px 0"><span class="bdg b-cy">Todas (214)</span><span class="bdg b-cinza">AIA (32)</span><span class="bdg b-cinza">Atas do Comitê (18)</span><span class="bdg b-cinza">Sinapses (41)</span><span class="bdg b-cinza">Capacitação (63)</span><span class="bdg b-cinza">Incidentes (9)</span></div>
+<div class="card" style="padding:0"><table>
+<tr><th>Evidência</th><th>Solução / obrigação</th><th>Tipo</th><th>Período</th><th>Hash de integridade</th></tr>
+<tr><td>📄 Relatório de AIA — Minuta de sentença</td><td>Minuta · AIA contínua</td><td>PDF</td><td>06/2026</td><td><span style="font-family:monospace;font-size:11px;color:var(--mut)">a3f9…1b2c ✓</span></td></tr>
+<tr><td>📄 Ata da reunião inaugural do Office de IA</td><td>Governança · art. 12</td><td>PDF</td><td>02/2026</td><td><span style="font-family:monospace;font-size:11px;color:var(--mut)">7c1e…9d4a ✓</span></td></tr>
+<tr><td>📄 Comprovante de cadastro Sinapses</td><td>Sumarizador · art. 24</td><td>PDF</td><td>04/2026</td><td><span style="font-family:monospace;font-size:11px;color:var(--mut)">e82b…5f10 ✓</span></td></tr>
+<tr><td>📊 Relatório de cobertura de capacitação</td><td>Letramento · art. 19</td><td>XLSX</td><td>05/2026</td><td><span style="font-family:monospace;font-size:11px;color:var(--mut)">11aa…cc90 ✓</span></td></tr>
+<tr><td>📄 Parecer jurídico de classificação</td><td>Análise de perfil · art. 9º</td><td>PDF</td><td>03/2026</td><td><span style="font-family:monospace;font-size:11px;color:var(--mut)">9b3d…7e22 ✓</span></td></tr>
+<tr><td>📄 Runbook de incidente EV-2026-011</td><td>Segurança · art. 42</td><td>PDF</td><td>01/2026</td><td><span style="font-family:monospace;font-size:11px;color:var(--mut)">4d77…a0f3 ✓</span></td></tr>
+</table></div>
+<div style="font-size:11px;color:var(--mut);margin-top:12px">Hash de integridade (não-adulteração) carimbado em cada anexo · retenção conforme política · exportação completa do tenant sob demanda (sem lock-in).</div></div><div class="screen" id="s-admin">
+<div class="h1">Administração</div><div class="sub">Multi-tenant · RBAC granular · trilha de auditoria imutável</div>
+<div style="display:flex;gap:24px;margin:18px 0 16px;border-bottom:1px solid var(--line)">
+<div style="padding:10px 2px;border-bottom:2px solid var(--blue);color:var(--blue);font-weight:700;font-size:13px">Usuários & perfis</div>
+<div style="padding:10px 2px;color:var(--mut);font-size:13px">Edições & módulos</div><div style="padding:10px 2px;color:var(--mut);font-size:13px">Trilha de auditoria</div></div>
+<div class="row"><div class="card" style="flex:1.2"><div class="sec">Usuários e papéis (RBAC · segregação de funções)</div>
+<table style="font-size:13px"><tr><th>Usuário</th><th>Papel</th><th>Escopo</th><th>MFA</th></tr>
+<tr><td>R. Godinho</td><td><span class="bdg b-cy">Gestor de conformidade</span></td><td>Todos os módulos</td><td><span class="bdg b-baixo">Ativo</span></td></tr>
+<tr><td>M. Andrade</td><td><span class="bdg b-cinza">Gestor de solução</span></td><td>Minhas soluções</td><td><span class="bdg b-baixo">Ativo</span></td></tr>
+<tr><td>DPO</td><td><span class="bdg b-cinza">Privacidade</span></td><td>Dados / RIPD</td><td><span class="bdg b-baixo">Ativo</span></td></tr>
+<tr><td>Auditor TCE</td><td><span class="bdg b-cinza">Somente leitura</span></td><td>Modo auditor</td><td><span class="bdg b-baixo">Ativo</span></td></tr></table></div>
+<div class="card" style="flex:1"><div class="sec">Trilha de auditoria imutável (append-only)</div>
+<div style="font-size:12.5px;line-height:1.7;font-family:monospace;color:var(--tx)">
+<div style="padding:7px 0;border-bottom:1px solid var(--line)"><b>18/06 14:02</b> · R.Godinho · classificou "Minuta" → AR4</div>
+<div style="padding:7px 0;border-bottom:1px solid var(--line)"><b>18/06 09:40</b> · TI · isolou "Sumarizador" (incidente)</div>
+<div style="padding:7px 0;border-bottom:1px solid var(--line)"><b>17/06 16:21</b> · Comitê · aprovou Política de IAGen v2</div>
+<div style="padding:7px 0;border-bottom:1px solid var(--line)"><b>17/06 11:08</b> · DPO · anexou evidência (hash 4d77…)</div>
+<div style="padding:7px 0"><b>16/06 10:55</b> · Admin · provisionou usuário "Auditor TCE"</div></div>
+<div style="font-size:11px;color:var(--mut);margin-top:12px">Log imutável · carimbo de tempo confiável · exportável · retido conforme política (art. 27).</div></div></div></div><div class="screen" id="s-cap"><div class="h1">Capacitação · AI Literacy</div><div class="sub">Trilhas por papel · certificação rastreável · flag "apto a usar IAGen" (art. 19, §3º, I) · Release 1</div>
+<div class="row" style="margin:18px 0"><div class="kpi" style="border-left-color:var(--baixo)"><div class="n" style="font-size:24px">82%</div><div class="l">Cobertura geral</div></div>
+<div class="kpi"><div class="n" style="font-size:24px">312</div><div class="l">Certificados emitidos</div></div>
+<div class="kpi" style="border-left-color:var(--med)"><div class="n" style="font-size:24px">68</div><div class="l">Pendentes (não aptos)</div></div></div>
+<div class="card" style="padding:0"><table><tr><th>Trilha</th><th>Público</th><th>Concluído</th><th>Cobertura</th><th>Status</th></tr>
+<tr><td>Fundamentos + vedações da 615</td><td>Magistrados</td><td>118 / 140</td><td>84%</td><td><span class="bdg b-med">Em curso</span></td></tr>
+<tr><td>Uso seguro de IAGen + segredo de justiça</td><td>Servidores</td><td>176 / 210</td><td>84%</td><td><span class="bdg b-med">Em curso</span></td></tr>
+<tr><td>Segurança de IA (prompt injection)</td><td>Equipe técnica</td><td>18 / 24</td><td>75%</td><td><span class="bdg b-med">Em curso</span></td></tr>
+<tr><td>Avaliação e contratos de IA</td><td>Jurídico</td><td>9 / 9</td><td>100%</td><td><span class="bdg b-baixo">Concluída</span></td></tr></table></div></div></div></div></div></div>
+<div class="demo">PROTÓTIPO MVP · navegável · dados ilustrativos</div>
+<script>
+const CRUMB={"dash": "<b>Dashboard executivo</b>", "inv": "Inventário · <b>AI Registry</b>", "sol": "Inventário · <b>Minuta de sentença</b>", "class": "<b>Classificação de risco</b>", "oblig": "<b>Matriz de obrigações</b>", "aia": "<b>Avaliação de impacto (AIA)</b>", "inc": "Incidentes · <b>EV-2026-014</b>", "evid": "<b>Cofre de evidências</b>", "cap": "<b>Capacitação</b>", "admin": "<b>Administração</b>"};
+function enter(){document.getElementById('login').style.display='none';document.getElementById('app').style.display='block';show('dash');window.scrollTo(0,0)}
+function logout(){document.getElementById('app').style.display='none';document.getElementById('login').style.display='block';window.scrollTo(0,0)}
+function show(k){
+ document.querySelectorAll('.screen').forEach(e=>e.classList.remove('on'));
+ var el=document.getElementById('s-'+k); if(el) el.classList.add('on');
+ var hi=(k==='sol')?'inv':k;
+ document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.k===hi));
+ document.getElementById('crumb').innerHTML=CRUMB[k]||'';
+ window.scrollTo(0,0);
+}
+</script></body></html>
