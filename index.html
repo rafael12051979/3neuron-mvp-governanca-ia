@@ -79,8 +79,8 @@ td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--tx)}tr:last
 <div class="ni"><span class="id" style="background:#00B8D9"></span><div>Resumo semanal de conformidade disponível</div></div></div></div>
 <div class="body"><div class="screen" id="s-dash"><div style="display:flex;align-items:flex-end;justify-content:space-between"><div><div class="h1">Dashboard executivo <span class="rfchip">RF-040</span></div><div class="sub">Visão de conformidade · TJ-Exemplo · atualizado há 2h</div></div><button class="btn gh">Exportar relatório do board (PDF)</button></div>
 <div class="row" style="margin-top:20px">
-<div class="kpi"><div class="n">37</div><div class="l">Soluções de IA inventariadas</div><div class="d" style="color:var(--mut)">+5 no último mês</div></div>
-<div class="kpi" style="border-left-color:var(--alto)"><div class="n" style="color:var(--alto)">8</div><div class="l">Obrigações vencidas</div><div class="d" style="color:var(--alto)">▲ requer ação</div></div>
+<div class="kpi"><div class="n">41</div><div class="l">Soluções de IA inventariadas</div><div class="d" style="color:var(--mut)">+9 no último mês</div></div>
+<div class="kpi" style="border-left-color:var(--alto)"><div class="n" style="color:var(--alto)">11</div><div class="l">Obrigações vencidas</div><div class="d" style="color:var(--alto)">▲ requer ação</div></div>
 <div class="kpi" style="border-left-color:var(--med)"><div class="n" style="color:var(--med)">2</div><div class="l">Incidentes abertos (72h)</div><div class="d" style="color:var(--med)">1 com prazo &lt; 24h</div></div>
 <div class="kpi" style="border-left-color:var(--baixo)"><div class="n">82%</div><div class="l">Cobertura de capacitação</div><div class="d" style="color:var(--baixo)">meta ≥ 95%</div></div></div>
 <div class="row" style="margin-top:18px">
@@ -91,7 +91,11 @@ td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--tx)}tr:last
 <table><tr><td style="width:40%">AIA vencida — solução AR (minuta de sentença)</td><td><span class="bdg b-alto">Crítica</span></td><td>Vence em 3 dias</td><td style="text-align:right"><span class="bdg b-cinza">Office de IA</span></td></tr>
 <tr><td>Cadastro Sinapses pendente (2 soluções)</td><td><span class="bdg b-alto">Alta</span></td><td>Vencida há 12d</td><td style="text-align:right"><span class="bdg b-cinza">TI</span></td></tr>
 <tr><td>Política de IAGen sem aceite (43 servidores)</td><td><span class="bdg b-med">Média</span></td><td>Em aberto</td><td style="text-align:right"><span class="bdg b-cinza">RH</span></td></tr>
-<tr><td>Reavaliação de fornecedor crítico</td><td><span class="bdg b-med">Média</span></td><td>Vence em 9 dias</td><td style="text-align:right"><span class="bdg b-cinza">Jurídico</span></td></tr></table></div></div></div><div class="screen" id="s-inv"><div style="display:flex;align-items:flex-end;justify-content:space-between"><div><div class="h1">Inventário · AI Registry <span class="rfchip">RF-001 · RF-004 · RF-011</span></div><div class="sub">37 soluções · inclui IA embarcada e uso informal (shadow AI)</div></div>
+<tr><td>Reavaliação de fornecedor crítico</td><td><span class="bdg b-med">Média</span></td><td>Vence em 9 dias</td><td style="text-align:right"><span class="bdg b-cinza">Jurídico</span></td></tr>
+<tr><td>Sumário público de AIA não publicado (AR2)</td><td><span class="bdg b-alto">Alta</span></td><td>Vencida há 4d</td><td style="text-align:right"><span class="bdg b-cinza">Office de IA</span></td></tr>
+<tr><td>Red teaming de solução exposta a terceiros</td><td><span class="bdg b-alto">Alta</span></td><td>Vence em 5 dias</td><td style="text-align:right"><span class="bdg b-cinza">CISO</span></td></tr>
+<tr><td>Treinamento prévio pendente (43 servidores)</td><td><span class="bdg b-med">Média</span></td><td>Em aberto</td><td style="text-align:right"><span class="bdg b-cinza">RH</span></td></tr>
+<tr><td>Cláusula de vedação de treino em contrato</td><td><span class="bdg b-med">Média</span></td><td>Vence em 11 dias</td><td style="text-align:right"><span class="bdg b-cinza">Jurídico</span></td></tr></table></div></div></div><div class="screen" id="s-inv"><div style="display:flex;align-items:flex-end;justify-content:space-between"><div><div class="h1">Inventário · AI Registry <span class="rfchip">RF-001 · RF-004 · RF-011</span></div><div class="sub">37 soluções · inclui IA embarcada e uso informal (shadow AI)</div></div>
 <div style="display:flex;gap:10px"><button class="btn gh" onclick="show('imp')">Importar planilha</button><button class="btn gh">Exportar matriz (XLSX)</button><button class="btn">+ Nova solução</button></div></div>
 <div style="display:flex;gap:10px;margin:18px 0"><span class="bdg b-cy">Todas (37)</span><span class="bdg b-cinza">Em produção (22)</span><span class="bdg b-cinza">Alto risco (11)</span><span class="bdg b-cinza">Sem Sinapses (6)</span><span class="bdg b-cinza">Shadow AI (4)</span></div>
 <div class="card" style="padding:0"><table><tr><th>Solução</th><th>Área dona</th><th>Risco</th><th>Ciclo de vida</th><th>Sinapses</th><th>Responsável</th></tr>
@@ -162,7 +166,10 @@ td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--tx)}tr:last
 <tr><td><b>Política Interna de IA</b> (art. 12)</td><td>v2.0</td><td><span class="bdg b-baixo">Publicada</span></td><td>91%</td></tr>
 <tr><td><b>Uso aceitável de IA Generativa</b></td><td>v1.3</td><td><span class="bdg b-baixo">Publicada</span></td><td><span style="color:var(--med)">63%</span></td></tr>
 <tr><td><b>Governança de dados para IA</b></td><td>v1.0</td><td><span class="bdg b-med">Em aprovação</span></td><td>—</td></tr>
-<tr><td>Cláusulas contratuais de fornecedores</td><td>v1.1</td><td><span class="bdg b-baixo">Publicada</span></td><td>n/a</td></tr></table></div>
+<tr><td>Cláusulas contratuais de fornecedores</td><td>v1.1</td><td><span class="bdg b-baixo">Publicada</span></td><td>n/a</td></tr>
+<tr><td><b>Plano de resposta a incidentes de IA</b> (art. 42)</td><td>v1.0</td><td><span class="bdg b-baixo">Publicada</span></td><td>n/a</td></tr>
+<tr><td><b>Tratamento de dados sob segredo de justiça</b></td><td>v1.2</td><td><span class="bdg b-baixo">Publicada</span></td><td>88%</td></tr>
+<tr><td>Política de segurança adversarial (MT 1/2026)</td><td>v1.0</td><td><span class="bdg b-med">Em aprovação</span></td><td>—</td></tr></table></div>
 <div class="card" style="flex:1"><div class="sec">Templates 3Neuron embarcados <span class="rfchip">RF-019</span></div>
 <div style="font-size:13px;line-height:1.5">
 <div style="padding:11px 0;border-bottom:1px solid var(--line)">📄 Regimento do Comitê de IA <span style="color:var(--blue);font-weight:600;cursor:pointer">usar →</span></div>
@@ -194,7 +201,9 @@ td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--tx)}tr:last
 <div class="row"><div class="card" style="flex:1.4"><div class="sec">Etapa 3 · Vieses e medidas mitigadoras</div><table style="font-size:13px"><tr><th>Risco</th><th>Medida mitigadora</th><th>Indicador</th></tr>
 <tr><td>Viés por região/classe</td><td>Curadoria + revisão humana</td><td><span class="bdg b-baixo">Monitorado</span></td></tr>
 <tr><td>Alucinação de jurisprudência</td><td>Citação rastreável</td><td><span class="bdg b-med">Em implantação</span></td></tr>
-<tr><td>Dependência excessiva</td><td>Marca "gerado por IA" (art. 21)</td><td><span class="bdg b-baixo">Ativo</span></td></tr></table></div>
+<tr><td>Dependência excessiva</td><td>Marca "gerado por IA" (art. 21)</td><td><span class="bdg b-baixo">Ativo</span></td></tr>
+<tr><td>Falta de explicabilidade</td><td>Relatório de explicabilidade ao jurisdicionado</td><td><span class="bdg b-med">Em implantação</span></td></tr>
+<tr><td>Reidentificação de dados anonimizados</td><td>Teste de reidentificação + criptografia</td><td><span class="bdg b-baixo">Monitorado</span></td></tr></table></div>
 <div class="card" style="flex:1"><div class="sec">Participação institucional (art. 14, §2º)</div><div style="font-size:13px;line-height:2.2"><div><span class="dot" style="background:#1F9D6B"></span>OAB — convidada · ata 02/2026</div><div><span class="dot" style="background:#1F9D6B"></span>Ministério Público — acompanhando</div><div><span class="dot" style="background:#E8A33D"></span>Defensoria — convite pendente</div></div>
 <div class="sec" style="margin-top:18px">Revisão periódica <span class="rfchip">RF-015</span></div><div style="font-size:13px;color:var(--mut)">Próxima revisão: <b style="color:var(--tx)">dez/2026</b> · status: <span class="bdg b-med">Em elaboração</span></div>
 <button class="btn cy" style="margin-top:18px;width:100%">Gerar sumário público (Sinapses)</button></div></div></div><div class="screen" id="s-inc"><div class="h1">Evento adverso EV-2026-014 <span class="rfchip">RF-022 · RF-023</span></div><div class="sub">Possível injeção de prompt via petição anexada · solução "Sumarizador de autos"</div>
@@ -226,7 +235,9 @@ td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--tx)}tr:last
 <tr><td>Fundamentos + vedações da 615</td><td>Magistrados</td><td>118 / 140</td><td>84%</td><td><span class="bdg b-med">Em curso</span></td></tr>
 <tr><td>Uso seguro de IAGen + segredo de justiça</td><td>Servidores</td><td>176 / 210</td><td>84%</td><td><span class="bdg b-med">Em curso</span></td></tr>
 <tr><td>Segurança de IA (prompt injection)</td><td>Equipe técnica</td><td>18 / 24</td><td>75%</td><td><span class="bdg b-med">Em curso</span></td></tr>
-<tr><td>Avaliação e contratos de IA</td><td>Jurídico</td><td>9 / 9</td><td>100%</td><td><span class="bdg b-baixo">Concluída</span></td></tr></table></div></div><div class="screen" id="s-admin"><div class="h1">Administração <span class="rfchip">RF-047 · RF-048 · RF-049 · RF-050</span></div><div class="sub">Multi-tenant · RBAC granular · parametrização por edição · trilha imutável</div>
+<tr><td>Avaliação e contratos de IA</td><td>Jurídico</td><td>9 / 9</td><td>100%</td><td><span class="bdg b-baixo">Concluída</span></td></tr>
+<tr><td>Proteção de dados na IA (LGPD)</td><td>DPO + áreas</td><td>54 / 70</td><td>77%</td><td><span class="bdg b-med">Em curso</span></td></tr>
+<tr><td>Supervisão humana e vedações</td><td>Liderança</td><td>22 / 31</td><td>71%</td><td><span class="bdg b-med">Em curso</span></td></tr></table></div></div><div class="screen" id="s-admin"><div class="h1">Administração <span class="rfchip">RF-047 · RF-048 · RF-049 · RF-050</span></div><div class="sub">Multi-tenant · RBAC granular · parametrização por edição · trilha imutável</div>
 <div class="subtabs"><span class="subtab on" data-g="adm" data-k="us" onclick="subtab('adm','us')">Usuários & perfis</span><span class="subtab" data-g="adm" data-k="ed" onclick="subtab('adm','ed')">Edições & módulos</span><span class="subtab" data-g="adm" data-k="lg" onclick="subtab('adm','lg')">Trilha de auditoria</span></div>
 <div class="subpanel on" data-g="adm" data-k="us"><div class="row"><div class="card" style="flex:1.2;padding:0"><div style="padding:16px 20px"><div class="sec" style="margin:0">Usuários e papéis (RBAC · segregação de funções) <span class="rfchip">RF-048</span></div></div>
 <table><tr><th>Usuário</th><th>Papel</th><th>Escopo</th><th>MFA</th></tr>
